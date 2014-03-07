@@ -1,5 +1,8 @@
 var apn = require('apn');
-var apnconn = new apn.connection({ gateway:'gateway.sandbox.push.apple.com' });
+
+var pushserver = process.env.NODE_ENV == 'production'?'gateway.push.apple.com':'gateway.sandbox.push.apple.com';
+
+var apnconn = new apn.connection({ gateway:pushserver });
 exports.apnconn = apnconn;
 
 apnconn.on('connected', function() {
