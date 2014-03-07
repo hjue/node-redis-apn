@@ -19,7 +19,7 @@ Apple Push Notification service with Node.js and Redis.
     $ node app.js   # for development
     
     放置message到redis的apns队列中，通知即刻便会发送出去。消息格式如下：
-    {'token':'your token','sound':'default.aiff','alert':'pushtest', 'badge':1,'payload':''}
+    {"token":"your token","sound":"default.aiff","alert":"pushtest","badge":1,"payload":""}
     
     
 ## Resources
