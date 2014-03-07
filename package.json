@@ -1,0 +1,16 @@
+{
+  "name": "node-redis-apn",
+  "description": "Apple Push Notification service with Node.js and Redis",
+  "version": "0.0.1",
+  "author": "haojue <haojue@gmail.com>",
+  "dependencies": {
+    "apn": "",
+    "redis": ""
+  },
+  "keywords": [
+    "redis",
+    "apn"
+  ],
+  "repository": "",
+  "license": "MIT"
+}
