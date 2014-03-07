@@ -11,6 +11,6 @@
     "redis",
     "apn"
   ],
-  "repository": "",
+  "repository": "https://github.com/hjue/node-redis-apn.git",
   "license": "MIT"
 }
