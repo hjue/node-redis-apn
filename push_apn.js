@@ -2,31 +2,29 @@ var apn = require('apn');
 
 var pushserver = process.env.NODE_ENV == 'production'?'gateway.push.apple.com':'gateway.sandbox.push.apple.com';
 
-var apnconn = new apn.connection({ gateway:pushserver });
-exports.apnconn = apnconn;
+var service = new apn.connection({ gateway:pushserver });
 
-apnconn.on('connected', function() {
+service.on('connected', function() {
     console.log("Connected");
 });
 
-apnconn.on('transmitted', function(notification, device) {
+service.on('transmitted', function(notification, device) {
     console.log("Notification transmitted to:" + device.token.toString('hex'));
 });
 
-apnconn.on('transmissionError', function(errCode, notification, device) {
+service.on('transmissionError', function(errCode, notification, device) {
     console.error("Notification caused error: " + errCode + " for device ", device, notification);
 });
 
-apnconn.on('timeout', function () {
+service.on('timeout', function () {
     console.log("Connection Timeout");
 });
 
-apnconn.on('disconnected', function() {
+service.on('disconnected', function() {
     console.log("Disconnected from APNS");
 });
 
-apnconn.on('socketError', console.error);
-
+service.on('socketError', console.error);
 
 function push(message) {
     var note = new apn.Notification();
@@ -55,7 +53,7 @@ function push(message) {
         note.sound = message.sound;
     }
     
-    apnconn.pushNotification(note, device);
+    service.pushNotification(note, device);
 }
 exports.push = push;
 

@@ -15,7 +15,6 @@ function pushWorker() {
       {
         push(messgage)
         setTimeout(pushWorker, 0);        
-        console.log('push message');
       }
     }catch(err)
     {
