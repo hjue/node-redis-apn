@@ -1,6 +1,10 @@
 var redis = require('redis');
 var push = require('./push_apn').push;
 
+process.on('uncaughtException', function (err) {
+   console.error('uncaughtException:' + err.stack);
+});
+
 var client  = redis.createClient();
 
 client.on('error', function(err) {
@@ -10,10 +14,10 @@ client.on('error', function(err) {
 function pushWorker() {
   client.blpop("apns", 0,function (err, res) {
     try{
-      var messgage = JSON.parse(res[1]);
-      if(messgage)
+      var message = JSON.parse(res[1]);
+      if(message)
       {
-        push(messgage)
+        push(message)
         setTimeout(pushWorker, 0);        
       }
     }catch(err)

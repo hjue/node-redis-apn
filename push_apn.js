@@ -27,6 +27,7 @@ service.on('disconnected', function() {
 service.on('socketError', console.error);
 
 function push(message) {
+    if(message.token==null || message.token.length!=64) return;
     var note = new apn.Notification();
     var device = new apn.Device(message.token);
     note.setAlertText(message.alert);
