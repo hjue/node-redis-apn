@@ -18,11 +18,12 @@ function pushWorker() {
       if(message)
       {
         push(message)
-        setTimeout(pushWorker, 0);        
+        setTimeout(pushWorker, 0);
       }
     }catch(err)
     {
       console.log(err);
+      setTimeout(pushWorker, 0);      
     }
   });
 }

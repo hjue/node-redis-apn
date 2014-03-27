@@ -9,6 +9,9 @@ service.on('connected', function() {
 });
 
 service.on('transmitted', function(notification, device) {
+  /*
+    TODO : 从payload中获取messageid，记录发送成功日志
+  */
     console.log("Notification transmitted to:" + device.token.toString('hex'));
 });
 
@@ -31,6 +34,8 @@ function push(message) {
     var note = new apn.Notification();
     var device = new apn.Device(message.token);
     note.setAlertText(message.alert);
+    
+    
     if (message.alert.length==0 || message.token==0)
     {
       return ;
@@ -46,8 +51,8 @@ function push(message) {
       note.expiry = Math.floor(Date.now() / 1000) + 86400;
     }
         
-    if(message.payload!=null && message.payload.length>0){
-      note.payload = message.payload;
+    if(message.payload!=null && (typeof message.payload =='object')){
+      note.payload = message.payload        
     }
     
     if(message.sound!=null  && message.sound.length>0){
