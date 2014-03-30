@@ -5,8 +5,8 @@ Apple Push Notification service with Node.js and Redis.
 
 ## Requirement
 
-*     安装Redis
-*    生成推送证书 cert.pem和key.pem,放置到项目根目录
+* Redis   
+* Generate cert.pem and key.pem, placed in the root directory of the project
 
 ## Installation
 
@@ -16,10 +16,8 @@ Apple Push Notification service with Node.js and Redis.
 
     $ NODE_ENV=production node app.js 
     
-    $ node app.js   # for development
-    
-    放置message到redis的apns队列中，通知即刻便会发送出去。消息格式如下：
-    {"token":"your token","sound":"default.aiff","alert":"pushtest","badge":1,"payload":""}
+    $ redis-cli
+    redis 127.0.0.1:6379> lpush apns '{"token":"your token","sound":"default.aiff","alert":"pushtest","badge":1,"payload":{}}'
     
     
 ## Resources
