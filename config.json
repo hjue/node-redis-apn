@@ -1,0 +1,30 @@
+{
+  "production": {
+    "worker": {
+      "redis": {
+        "host": "localhsot",
+        "port": 6379,
+        "listKey": "apns.yourProduct"
+      },
+      "apn": {
+        "production": false,
+        "pfx": "/path/to/your/p12.p12",
+        "passphrase": "passphrase"
+      }
+    }
+  },
+  "development": {
+    "worker": {
+      "redis": {
+        "host": "192.168.*.*",
+        "port": 6379,
+        "listKey": "apns.yourProduct"
+      },
+      "apn": {
+        "production": true,
+        "pfx": "/path/to/your/p12.p12",
+        "passphrase": "passphrase"
+      }
+    }
+  }
+}
